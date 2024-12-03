@@ -5,6 +5,7 @@ from mkpj.templates import update_templates
 from mkpj.project import create_project
 from mkpj.logging_config import configure_logging
 import mkpj.cli_menu as cli_menu
+from .config import Config
 
 LOGGING = False
 configure_logging(LOGGING)

@@ -4,8 +4,7 @@ class Config:
     BUILD_FOLDER_NAME = "build"
     LICENSES_FOLDER_NAME = "licenses"
     PROJECT_TEMPLATE_FOLDER_NAME = "project"
-    GIT_REMOTE_REPO = "https://github.com/your/repo.git"
-    # Add other configuration settings here
+    GIT_REMOTE_REPO = "https://github.com/BaptisteP31/mkpj-python.git"
 
     @staticmethod
     def get_build_folder_name():
