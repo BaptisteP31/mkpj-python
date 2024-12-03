@@ -12,21 +12,21 @@ if command -v python3 &> /dev/null; then
 elif command -v python &> /dev/null; then
     PYTHON_CMD=python
 else
-    echo "Python 3 could not be found. Please install Python 3 and try again."
+    echo -e "${ANSI_RED}Python 3 could not be found. Please install Python 3 and try again.${ANSI_RESET}"
     exit 1
 fi
 
-echo "Using Python command: $PYTHON_CMD"
+echo -e "${ANSI_GREEN}Using Python command: $PYTHON_CMD${ANSI_RESET}"
 
 # Create a temporary directory
 TMP_DIR=$(mktemp -d)
-echo "Created temporary directory at $TMP_DIR"
+echo -e "${ANSI_GREEN}Created temporary directory at $TMP_DIR${ANSI_RESET}"
 
 # Clone the repository
 REPO_URL="https://github.com/BaptisteP31/mkpj-python"
-echo $ANSI_BLUE"Cloning repository $REPO_URL..." $ANSI_RESET
+echo -e "${ANSI_GREEN}Cloning repository from $REPO_URL...${ANSI_RESET}"
 if ! git clone $REPO_URL $TMP_DIR; then
-    echo $ANSI_RED"Failed to clone repository. Aborting installation." $ANSI_RESET
+    echo -e "${ANSI_RED}Failed to clone repository.${ANSI_RESET}"
     rm -rf $TMP_DIR
     exit 1
 fi
@@ -35,11 +35,11 @@ fi
 cd $TMP_DIR
 
 # Build and install the package
-echo $ANSI_BLUE"Building and installing package..." $ANSI_RESET
+echo -e "${ANSI_GREEN}Building and installing package...${ANSI_RESET}"
 $PYTHON_CMD -m pip install .
 
 # Inform the user
-echo $ANSI_GREEN"Installation complete." $ANSI_RESET
+echo -e "${ANSI_GREEN}The package has been installed successfully.${ANSI_RESET}"
 
 # Clean up
 echo "Cleaning up..."
