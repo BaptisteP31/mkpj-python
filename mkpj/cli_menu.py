@@ -18,7 +18,10 @@ def main():
     }])["project_name"]
 
     licenses = get_choices(os.path.expanduser(config.Config.ROOT_FOLDER_NAME + "/templates/licenses"))
-    build_systems = get_choices(os.path.expanduser(config.Config.ROOT_FOLDER_NAME + "/templates/build"))
+    build_systems = get_choices(os.path.expanduser(config.Config.ROOT_FOLDER_NAME + "/templates/build"), only_files=False)
+    
+    # licenses have a .txt extension, hide it
+    licenses = [license.split(".")[0] for license in licenses]
 
     if not licenses:
         print("No licenses found.")
