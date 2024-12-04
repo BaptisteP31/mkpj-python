@@ -2,6 +2,7 @@ import os
 from InquirerPy import prompt
 import mkpj.project as project
 import mkpj.ansi_colors as ansi_colors
+import mkpj.config as config
 
 def get_choices(directory, only_files=True):
     if only_files:
@@ -16,8 +17,8 @@ def main():
         "name": "project_name"
     }])["project_name"]
 
-    licenses = [os.path.splitext(f)[0] for f in get_choices(os.path.expanduser("~/.create-project/templates/licenses"))]
-    build_systems = get_choices(os.path.expanduser("~/.create-project/templates/build"), only_files=False)
+    licenses = get_choices(os.path.expanduser(config.Config.ROOT_FOLDER_NAME + "/templates/licenses"))
+    build_systems = get_choices(os.path.expanduser(config.Config.ROOT_FOLDER_NAME + "/templates/build"))
 
     if not licenses:
         print("No licenses found.")
